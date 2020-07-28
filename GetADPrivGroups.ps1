@@ -2,11 +2,30 @@
 
 Import-Module ActiveDirectory
 
-New-Item c:\OTSK
+$out = $env:HOMEDRIVE + $env:HOMEPATH + "\OSTK"
+New-Item -ItemType Directory $out
 
-Get-ADGroupMember -identity "Domain Admins" | select objectClass,SamAccountName,name,distinguishedName | Export-csv -path c:\OTSK\Groupmembers.csv -NoTypeInformation
-Get-ADGroupMember -identity "Enterprise Admins" | select objectClass,SamAccountName,name,distinguishedName | Export-csv -path c:\OTSK\Groupmembers.csv -NoTypeInformation -append
-Get-ADGroupMember -identity "Schema Admins" | select objectClass,SamAccountName,name,distinguishedName | Export-csv -path c:\OTSK\Groupmembers.csv -NoTypeInformation -append
-Get-ADGroupMember -identity "Account Operators" | select objectClass,SamAccountName,name,distinguishedName | Export-csv -path c:\OTSK\Groupmembers.csv -NoTypeInformation -append
-Get-ADGroupMember -identity "Backup Operators" | select objectClass,SamAccountName,name,distinguishedName | Export-csv -path c:\OTSK\Groupmembers.csv -NoTypeInformation -append
-Get-ADGroupMember -identity "Group Policy Creator Owners" | select objectClass,SamAccountName,name,distinguishedName | Export-csv -path c:\OTSK\Groupmembers.csv -NoTypeInformation -append
+$g = "Domain Admins"
+Get-ADGroupMember -identity $g | select objectClass,SamAccountName,name,distinguishedName | 
+Export-csv -path $out\$g.csv -NoTypeInformation
+
+$g = "Enterprise Admins"
+Get-ADGroupMember -identity $g  | select objectClass,SamAccountName,name,distinguishedName | 
+Export-csv -path $out\$g.csv -NoTypeInformation
+
+$g = "Schema Admins"
+Get-ADGroupMember -identity $g | select objectClass,SamAccountName,name,distinguishedName | 
+Export-csv -path $out\$g.csv -NoTypeInformation
+
+$g = "Account Operators" 
+Get-ADGroupMember -identity $g | select objectClass,SamAccountName,name,distinguishedName | 
+Export-csv -path $out\$g.csv -NoTypeInformation
+
+$g = "Backup Operators"
+Get-ADGroupMember -identity $g | select objectClass,SamAccountName,name,distinguishedName | 
+Export-csv -path $out\$g.csv -NoTypeInformation
+
+$g = "Group Policy Creator Owners"
+Get-ADGroupMember -identity  $g | select objectClass,SamAccountName,name,distinguishedName |
+Export-csv -path $out\$g.csv -NoTypeInformation
+
