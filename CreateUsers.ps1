@@ -8,8 +8,8 @@ foreach ($User in $ADUsers)
        $Password    = $User.password
        $Firstname   = $User.firstname
        $Lastname    = $User.lastname
-    $Department = $User.department
-       $OU           = $User.ou
+       $Department  = $User.department
+       $OU          = $User.ou
 
        #Check if the user account already exists in AD
        if (Get-ADUser -F {SamAccountName -eq $Username})
@@ -21,10 +21,11 @@ foreach ($User in $ADUsers)
        {
               #If a user does not exist then create a new user account
           
-        #Account will be created in the OU listed in the $OU variable in the CSV file; don’t forget to change the domain name in the"-UserPrincipalName" variable
+        # Account will be created in the OU listed in the $OU variable in the CSV file; don’t forget to change
+        # the domain name in the"-UserPrincipalName" variable from "ad.local"
               New-ADUser `
             -SamAccountName $Username `
-            -UserPrincipalName "$Username@yourdomain.com" `
+            -UserPrincipalName "$Username@ad.local" `
             -Name "$Firstname $Lastname" `
             -GivenName $Firstname `
             -Surname $Lastname `
