@@ -508,6 +508,7 @@ function Invoke-SpraySinglePassword
 
     foreach ($User in $UserListArray)
     {
+        "Checking $user"
         if ($UsernameAsPassword)
         {
             $Password = $User
@@ -522,7 +523,8 @@ function Invoke-SpraySinglePassword
             Write-Host -ForegroundColor Green "[*] SUCCESS! User:$User Password:$Password"
         }
         $curr_user += 1
-        Write-Host -nonewline "$curr_user of $count users tested`r"
+        # Write-Host -nonewline "$curr_user of $count users tested`r"
+        Write-Host "$curr_user of $count users tested`r"
         if ($Delay)
         {
             Start-Sleep -Seconds $RandNo.Next((1-$Jitter)*$Delay, (1+$Jitter)*$Delay)
